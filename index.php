@@ -8,6 +8,8 @@
 </head>
 <body>
 
+<?php include 'conexaoDB.php'?>    
+
     <div class="container my-5">
         <h3>Lista de pessoas</h3>
         <a class="btn btn-primary" href="criar.php">Adicionar</a>
@@ -23,6 +25,32 @@
             </tr>
         </thead>
         <tbody>
+       <?php 
+        $sql = "SELECT * FROM pessoas";
+        $resultado = $conexao->query($sql); 
+        
+        if(!$resultado) {
+            die("Falha: " . $conexao->error);
+        }
+        
+        while($linha = $resultado->fetch_assoc()){
+            echo "
+            <tr>
+                <td>$linha[id]</td>
+                <td>$linha[nome]</td>
+                <td>$linha[email]</td>
+                <td>$linha[celular]</td>
+                <td>
+                    <a class='btn btn-primary btn-sm' href='editar.php?id=$linha[id]'>Editar</a>
+                    <a class='btn btn-danger btn-sm' href='excluir.php?id=$linha[id]'>Excluir</a>
+                </td>
+            </tr>
+            ";
+        }
+        
+        
+        ?>
+            
         </tbody>
     </table>
 </body>
