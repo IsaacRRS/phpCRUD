@@ -45,3 +45,87 @@ do {
 }
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar</title>
+    <!-- dependênciais para estilização -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+    <div class="container my-5">
+        <h3>Criar novo usuário</h3>
+
+        <?php 
+        
+        if (!empty($mensagemErro)) { //definir mensagem de erro
+            echo "
+
+            <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                <strong>$mensagemErro</strong>
+                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+            
+            ";
+        }
+
+        ?>
+
+
+        <form method="post">   <!-- formulário simples -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Nome</label>
+                <div class="col-sm-6">
+                    <input type="text" name="nome" value="<?php echo $nome; ?>" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-6">
+                    <input type="text" name="email" value="<?php echo $email; ?>" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Celular</label>
+                <div class="col-sm-6">
+                    <input type="text" name="celular" value="<?php echo $celular; ?>" class="form-control">
+                </div>
+            </div>
+
+<?php 
+        
+if (!empty($mensagemSucesso)) { //definir mensagem de sucesso
+
+echo "
+            
+    <div class='row mb-3'>
+        <div class='offset-sm-3 col-sm-6>
+            <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                <strong>$mensagemSucesso</strong>
+                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+        </div>
+    </div>
+    ";
+
+}
+        
+?>
+
+            <div class="row mb-3">
+                <div class="offset-sm-3 col-sm-3 d-grid">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+                <div class="col-sm-3 d-grid">
+                    <a class="btn btn-outline-primary" href="index.php" role="button">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
