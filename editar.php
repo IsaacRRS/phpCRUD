@@ -84,5 +84,75 @@ else {
 </head>
 <body>
 
+    <div class="container my-5">
+        <h3>Editar usuário</h3>
+
+        <?php 
+
+        if (!empty($mensagemErro)) { //manda mensagem de erro caso haja necessidade
+            echo "
+
+            <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                <strong>$mensagemErro</strong>
+                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+            
+            ";
+        }
+
+        ?>
+
+
+        <form method="post"> <!-- formulário simples -->
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Nome</label>
+                <div class="col-sm-6">
+                    <input type="text" name="nome" value="<?php echo $nome; ?>" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-6">
+                    <input type="text" name="email" value="<?php echo $email; ?>" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Celular</label>
+                <div class="col-sm-6">
+                    <input type="text" name="celular" value="<?php echo $celular; ?>" class="form-control">
+                </div>
+            </div>
+
+<?php 
+        
+if (!empty($mensagemSucesso)) { //manda mensagem de sucesso caso haja necessidade
+
+echo "
+            
+    <div class='row mb-3'>
+        <div class='offset-sm-3 col-sm-6>
+            <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                <strong>$mensagemSucesso</strong>
+                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+        </div>
+    </div>
+    ";
+
+}
+        
+?>
+
+            <div class="row mb-3">
+                <div class="offset-sm-3 col-sm-3 d-grid">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+                <div class="col-sm-3 d-grid">
+                    <a class="btn btn-outline-primary" href="index.php" role="button">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
